@@ -13,9 +13,7 @@ Se debe realizar una aplicación que permita a un usuario:
 - Cerrar sesíón.
 
 Todas las acciones deberán realizarse por medio de consultas a una API y es requerido implementar 
-una lógica de cache que compare si los registros consultados ya existen y si el valor "time_updated" de cada item es diferente,
-se deberá actualizar la información de cache del mismo a partir de la consulta, sino deberá mostrarse
-el listado de articulos desde la cache.
+una lógica de cache que compare si los registros consultados ya existen y si el valor "time_updated" de cada item es diferente, se deberá actualizar la información de cache del mismo a partir de la consulta, sino deberá mostrarse el listado de articulos desde la cache.
 
 ## Indicaciones
 

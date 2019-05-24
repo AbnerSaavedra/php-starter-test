@@ -2,15 +2,15 @@
 
 ## LOGIN
 ```
-https[s]://auth.dev.graphs.social/v3/login
+https[s]://auth.dev.graphs.social/v4/login
 ```
 METHOD: GET
 
 #### PARAMETROS
 Name           | Description                       
 :------------- |:----------------------------------
-email          | testing_user1@emailna.co 
-password       | Testing1          
+email          | testing3@emailna.co 
+password       | Admin01          
 application_id | 5b51eb29303935456453d09a
 
 ## LOGOUT
@@ -39,9 +39,7 @@ next           | valor _time_updated_ del ultimo registro de la pagina anterior
  
 > **Nota**: La api devuelve un objeto con dos valores, "status" y "data"m=, en `data.entries`
 se devuelve un objeto cons los _ids_  y el valor  _time_updated_ del item para validar si está
-actualizado. `data.data` contiene la información
-de cada _entry_  retornado. La información de los posts se encuentra en
-el objeto **document** y el valor _time_updated_  tambien se encuentra en cada item del arreglo "data"
+actualizado. `data.data` contiene la información de cada _entry_  retornado. La información de los posts se encuentra en el objeto **document** y el valor _time_updated_  tambien se encuentra en cada item del arreglo "data"
  
  Ejemplo:
  ```

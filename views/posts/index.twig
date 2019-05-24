@@ -1,0 +1,56 @@
+{% extends 'layout.twig' %}
+{% block additionalCSS %}
+{% endblock %}
+{% block content %}
+{% if responseMessage != '' %}
+<div class="alert alert-info" role="alert">
+    {{ responseMessage }}
+</div>
+{% endif %}
+<!--main-content-->
+<h1>Posts' List</h1>
+<div class="btn-group pull-left">
+    <a href="panelAdmin" type='button' class="btn btn-primary"><span class="glyphicon glyphicon-back"></span>Go back</a>
+</div>
+<div class="btn-group pull-right">
+    <button type='button' class="btn btn-info" data-toggle="modal" data-target="#addStdModal"><span class="glyphicon glyphicon-plus"></span>Add post</button>
+</div>
+<br>
+<br>
+<div class="table-responsive">
+    <table id="posts" class="display">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Time created</th>
+                <th>Time updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        	{% for post in posts %}
+            <tr>
+                <td id="">{{post}}</td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td>
+                    <button class="btn btn-default edSt" title="Update student" type="button" value="{{person.id}}"><i class="glyphicon glyphicon-edit"></i></button>
+                    <button href="#" class="btn btn-default delStd" title="Delete student" value="{{person.id}}"><i class="glyphicon glyphicon-trash"></i></button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div id="resultados_ajax2"></div>
+    {% endblock %}
+    {% block additionalScripts %}
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#posts').DataTable();
+    });
+    </script>
+    {% endblock %}
