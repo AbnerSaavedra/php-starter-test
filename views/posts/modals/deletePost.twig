@@ -1,0 +1,30 @@
+<!-- Modal update student-->
+<div class="modal fade" id="deletePost" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete post</h4>
+                {% if responseMessage != '' %}
+                <div class="alert alert-info" role="alert">
+                    {{ responseMessage }}
+                </div>
+                {% endif %}
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal updStd" method="post" name="updStd" id="updStd">
+                    <div class="form-group">
+                        <div class="col-sm-8">
+                            <input size="40" class="form-control" name="" type="hidden" id="" value="{{post.id}}">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="saveData" name="actDatos">Delete</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
