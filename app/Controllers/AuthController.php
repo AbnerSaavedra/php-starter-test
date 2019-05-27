@@ -16,10 +16,11 @@ class AuthController extends BaseController{
 
 			$method = 'GET';
 			$url = 'https://auth.dev.graphs.social/v4/login';
+			$application_id = '5b51eb29303935456453d09a';
 			$data = array(
 			    'email' => $postData['email'],
 			    'password' => $postData['password'],
-			    'application_id' => $postData['appId']
+			    'application_id' => $application_id
 			);
 			$serverRequest = new ServerRequest();
 			$callAPI = $serverRequest->callAPI($method, $url, $data);

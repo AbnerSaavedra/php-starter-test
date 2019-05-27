@@ -46,6 +46,22 @@ $map->post('addPost', '/php-starter-test/posts', [
     'controller' => 'App\Controllers\PostController',
     'action' => 'addPost'
     ]);
+$map->get('updatePostGet', '/php-starter-test/postUpdate', [
+    'controller' => 'App\Controllers\PostController',
+    'action' => 'updatePost'
+    ]);
+$map->post('updatePost', '/php-starter-test/postUpdate', [
+    'controller' => 'App\Controllers\PostController',
+    'action' => 'updatePost'
+    ]);
+$map->get('deletePostGet', '/php-starter-test/postDelete', [
+    'controller' => 'App\Controllers\PostController',
+    'action' => 'deletePost'
+    ]);
+$map->post('deletePost', '/php-starter-test/postDelete', [
+    'controller' => 'App\Controllers\PostController',
+    'action' => 'deletePost'
+    ]);
 //Creamos el validador de rutas
 $matcher = $routerContainer->getMatcher();
 

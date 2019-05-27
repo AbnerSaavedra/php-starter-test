@@ -34,6 +34,55 @@ class PostController extends BaseController{
 		return new RedirectResponse('posts');
 	}
 
+	public function updatePost($request){
+		
+		if ($request->getMethod() === "GET") {
+			
+			echo "Update post";
+		}else{
+
+		$postData = $request->getParsedBody();
+		$method = 'PUT';
+		$id = $postData['idPost'];
+		$url = 'https://api.dev.graphs.social/v4/graphs/'.$id.'?';
+		$title = $postData['titlePost'];
+		$description = $postData['descriptionPost'];
+		$access_token = $_SESSION['access_token'];
+		$data = array(
+			    'access_token' => $access_token,
+			    'title' => $title,
+			    'description' => $description
+			);
+		$serverRequest = new ServerRequest();
+		$callAPI = $serverRequest->callAPI($method, $url, $data);
+		$this->recargarTabla();
+		return new RedirectResponse('posts');
+		}
+		
+	}
+
+	public function deletePost($request){
+
+		if ($request->getMethod() === "GET") {
+			
+			echo "delete post";
+		}else{
+		
+		$postData = $request->getParsedBody();
+		$method = 'DELETE';
+		$idPost = $postData['idPostDel'];
+		$url = 'https://api.dev.graphs.social/v4/graphs/'.$idPost.'?';
+		$access_token = $_SESSION['access_token'];
+		$data = array(
+			    'access_token' => $access_token
+			);
+		$serverRequest = new ServerRequest();
+		$callAPI = $serverRequest->callAPI($method, $url, $data);
+		$this->recargarTabla();
+		return new RedirectResponse('posts');
+	  }
+	}
+
 	public function recargarTabla(){
 
 			$serverRequest = new ServerRequest();

@@ -13,14 +13,14 @@
                 {% endif %}
             </div>
             <div class="modal-body">
-                <form class="form-horizontal updStd" method="post" name="updStd" id="updStd">
+                <form class="form-horizontal" method="post" action="postDelete" id="delPost">
                     <div class="form-group">
                         <div class="col-sm-8">
-                            <input size="40" class="form-control" name="" type="hidden" id="" value="{{post.id}}">
+                            <input size="40" class="form-control" name="idPostDel" type="hidden" id="idPostDel">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" id="saveData" name="actDatos">Delete</button>
+                        <button type="submit" class="btn btn-primary" id="delData" name="actDatos">Delete</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </form>

@@ -19,6 +19,7 @@ class ServerRequest{
       break;
     case "PUT":
       $curl->put($url, $data);
+      var_dump($data);
       return $this->validarResponse($curl, "PUT");
       break;
     case "DELETE":
@@ -32,14 +33,18 @@ class ServerRequest{
     if ($curl->error) {
       return $response = $curl;
     } else {
-     if ($curl->response->data) {
+     if (isset($curl->response->data) and !empty($curl->response->data)) {
+
        $response = $curl->response->data;
        return $response;
+
+     }elseif ($method == "PUT" || $method == "POST") {
+          
+           // echo 'Data server received via POST:' . "\n";
+           // var_dump($curl->response);
+          $response = $curl->response->form;
+          return $response;
      }
-   }
-   if($method === "POST") {
-    echo 'Data server received via POST:' . "\n";
-    var_dump($curl->response->form);
    }
  }
 

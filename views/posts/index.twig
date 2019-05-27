@@ -32,14 +32,14 @@
         <tbody>
             {% for post in posts.data %}
             <tr>
-                <td id="">{{post.id}}</td>
-                <td id="">{{post.document.title}}</td>
-                <td id="">{{post.document.description}}</td>
-                <td id="">{{post.time_created}}</td>
-                <td id="">{{post.time_updated}}</td>
+                <td id="{{post.id}}">{{post.id}}</td>
+                <td id="title{{post.id}}">{{post.document.title}}</td>
+                <td id="desc{{post.id}}">{{post.document.description}}</td>
+                <td id="tcr{{post.id}}">{{post.time_created}}</td>
+                <td id="tud{{post.id}}">{{post.time_updated}}</td>
                 <td>
-                    <button class="btn btn-default edSt" title="Update post" type="button" value="{{post.id}}" data-toggle="modal" data-target="#updatePost"><i class="glyphicon glyphicon-edit"></i></button>
-                    <button href="#" class="btn btn-default" title="Delete post" value="{{post.id}}" data-toggle="modal" data-target="#deletePost"><i class="glyphicon glyphicon-trash"></i></button>
+                    <button class="btn btn-default edPost" title="Update post" type="button" value="{{post.id}}" data-toggle="modal" data-target="#updatePost"><i class="glyphicon glyphicon-edit"></i></button>
+                    <button href="#" class="btn btn-default delPost" title="Delete post" value="{{post.id}}" data-toggle="modal" data-target="#deletePost"><i class="glyphicon glyphicon-trash"></i></button>
                 </td>
             </tr>
             {% endfor %}
@@ -53,6 +53,24 @@
     <script type="text/javascript">
     $(document).ready(function() {
         $('#posts').DataTable();
+
+        $(document).on('click', '.edPost', function() {
+            var id = $(this).val();
+            var title = $("#title" + id).text();
+            var desc = $("#desc" + id).text();
+            var tcr = $("#tcr" + id).text();
+            var tud = $("#tud" + id).text();
+            $('#updatePost').modal('show');
+            $('#idPost').val(id);
+            $('#titlePost').val(title);
+            $('#descriptionPost').val(desc);
+        });
+
+        $(document).on('click', '.delPost', function() {
+            var id = $(this).val();
+            $('#deletePost').modal('show');
+            $('#idPostDel').val(id);
+        });
     });
     </script>
     {% endblock %}

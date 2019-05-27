@@ -13,15 +13,15 @@
                 {% endif %}
             </div>
             <div class="modal-body">
-            <form class="form-horizontal updStd" method="post" name="updStd" id="updStd">
+            <form class="form-horizontal" method="post" action="postUpdate" id="updPost">
                     <div class="form-group">
                         <label for="lastname" class="col-sm-3 control-label">
                             <span class="form_required">*</span>
                             Title
                         </label>
                         <div class="col-sm-7">
-                            <input size="40" class="form-control" name="title" type="text" id="title" required="" value="{{post.document.title}}">
-                            <input size="40" class="form-control" name="" type="hidden" id="">
+                            <input size="40" class="form-control" name="titlePost" type="text" id="titlePost" required>
+                            <input size="40" class="form-control" name="idPost" type="hidden" id="idPost">
                         </div>
                     </div>
                     <div class="form-group ">
@@ -30,14 +30,13 @@
                             Description
                         </label>
                         <div class="col-sm-7">
-                            <textarea size="40" class="form-control" name="description" type="text" id="description" required cols="15" rows="12">
-                                {{post.document.title}}
+                            <textarea size="40" class="form-control" name="descriptionPost" type="text" id="descriptionPost" cols="15" rows="12" required>
                             </textarea>
                             <!--<input size="40" class="form-control" name="description" type="text" id="description" required value="{{post.document.title}}">-->
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" id="saveData" name="actDatos">Update</button>
+                        <button type="submit" class="btn btn-primary" id="updateData" name="actDatos">Update</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </form>
