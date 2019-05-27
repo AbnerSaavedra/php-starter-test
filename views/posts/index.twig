@@ -10,10 +10,11 @@
 <!--main-content-->
 <h1>Posts' List</h1>
 <div class="btn-group pull-left">
-    <a href="panelAdmin" type='button' class="btn btn-primary"><span class="glyphicon glyphicon-back"></span>Go back</a>
+    <a href="/php-starter-test" type='button' class="btn btn-primary"><span class="glyphicon glyphicon-back"></span>Go back</a>&nbsp;&nbsp;&nbsp;
+    <a href="/php-starter-test/logout" type='button' class="btn btn-warning"><span class="glyphicon glyphicon-back"></span>Logout</a>
 </div>
 <div class="btn-group pull-right">
-    <button type='button' class="btn btn-info" data-toggle="modal" data-target="#addStdModal"><span class="glyphicon glyphicon-plus"></span>Add post</button>
+    <button type='button' class="btn btn-info" data-toggle="modal" data-target="#addPost"><span class="glyphicon glyphicon-plus"></span>Add post</button>
 </div>
 <br>
 <br>
@@ -30,22 +31,24 @@
             </tr>
         </thead>
         <tbody>
-        	{% for post in posts %}
+            {% for post in posts %}
             <tr>
-                <td id="">{{post}}</td>
+                <td id="">{{post.data.document.description}}</td>
                 <td id=""></td>
                 <td id=""></td>
                 <td id=""></td>
                 <td id=""></td>
                 <td>
-                    <button class="btn btn-default edSt" title="Update student" type="button" value="{{person.id}}"><i class="glyphicon glyphicon-edit"></i></button>
-                    <button href="#" class="btn btn-default delStd" title="Delete student" value="{{person.id}}"><i class="glyphicon glyphicon-trash"></i></button>
+                    <button class="btn btn-default edSt" title="Update student" type="button" value="" data-toggle="modal" data-target="#updatePost"><i class="glyphicon glyphicon-edit"></i></button>
+                    <button href="#" class="btn btn-default delStd" title="Delete student" value=""><i class="glyphicon glyphicon-trash"></i></button>
                 </td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </tbody>
     </table>
     <div id="resultados_ajax2"></div>
+    {% include 'posts/modals/addPost.twig' %}
+    {% include 'posts/modals/updatePost.twig' %}
     {% endblock %}
     {% block additionalScripts %}
     <script type="text/javascript">

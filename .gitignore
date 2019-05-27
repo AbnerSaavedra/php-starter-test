@@ -2,3 +2,4 @@
 vendor
 .vcs
 node_modules
+app/controllers/codigoGuardado.php

@@ -27,17 +27,25 @@ $map->get('index', '/php-starter-test/', [
     'action' => 'indexAction'
     ]);
 //Login
-$map->post('loginPost', '/php-starter-test/sign-in', [
+$map->post('login', '/php-starter-test/sign-in', [
     'controller' => 'App\Controllers\AuthController',
     'action' => 'getLogin'
+    ]);
+$map->get('logout', '/php-starter-test/logout', [
+    'controller' => 'App\Controllers\AuthController',
+    'action' => 'getLogout'
     ]);
 
 //Posts
 $map->get('posts', '/php-starter-test/posts', [
     'controller' => 'App\Controllers\PostController',
-    'action' => 'getIndex'
+    'action' => 'getIndex',
+    'needsAuth' => true
     ]);
-
+$map->post('addPost', '/php-starter-test/posts', [
+    'controller' => 'App\Controllers\PostController',
+    'action' => 'addPost'
+    ]);
 //Creamos el validador de rutas
 $matcher = $routerContainer->getMatcher();
 
@@ -53,13 +61,12 @@ else{
     $handlerData = $route->handler;
     $controllerName = new $handlerData['controller'];
     $actionName = $handlerData['action'];
-    $needsAuth = $handlerData['auth'] ?? false; //Se comprueba si el usuario necesita autenticarse
-
-    $sessionUserId = $_SESSION['userId'] ?? null;
+    $needsAuth = $handlerData['needsAuth'] ?? false; //Se comprueba si el usuario necesita autenticarse
+    $sessionUserId = $_SESSION['access_token'] ?? null;
     $responseMessage = null;
     if ($needsAuth && !$sessionUserId) {
 
-        $controllerName = 'App\Controller\AuthController';
+        $controllerName = 'App\Controllers\AuthController';
         $actionName = 'getLogout' ;
     }
 

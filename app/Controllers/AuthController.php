@@ -23,16 +23,37 @@ class AuthController extends BaseController{
 			);
 			$serverRequest = new ServerRequest();
 			$callAPI = $serverRequest->callAPI($method, $url, $data);
-
+			// var_dump($callAPI);
 			if (isset($callAPI->access_token) and !empty($callAPI->access_token)) {
 			
 			$method = 'GET';
 			$url = 'https://api.dev.graphs.social/v4/graphs';
+			$containers_ids = "5c6f101e3039354937fc1279";
+			$entities_ids = "14,23,48,49,50,51";
+			$limit = "30";
+			$next = "1558011006";
 			$access_token = $callAPI->access_token;
-			$data = array( 'access_token' => $access_token );	
-
-			$responsePosts = $serverRequest->callAPI($method, $url, $data);
+			$_SESSION['access_token'] = $access_token;
+			$data = array( 'containers_ids' => $containers_ids, 'entities_ids' => $entities_ids, 'limit' => $limit, 'next' => $next );	
+			$response = $serverRequest->callAPI($method, $url, $data);
+			//var_dump($responsePosts);
+			$responsePosts = json_decode(json_encode($response), true);
 			$_SESSION['posts'] = $responsePosts;
+			$entries = $responsePosts->entries;
+			$datas = $responsePosts->data;
+			
+			print_r($responsePosts);
+
+			// foreach ($entries as $key => $value) {
+
+			// 	echo "Key: ".$key." Value: ". $value . "<br>";
+			// }
+
+			// foreach ($datas as $key => $value) {
+				
+			// 	echo "Key: ".$key." Value: ". $value->document->description . "<br>";
+			//  }
+
 			return new RedirectResponse('posts');
 			}elseif (isset($callAPI->errorCode) and !empty($callAPI->errorCode)){
 
@@ -53,8 +74,14 @@ class AuthController extends BaseController{
 
 	public function getLogout(){
 
-		unset($_SESSION['userId']);
-		return new RedirectResponse('login');
+		$method = 'GET';
+		$url = 'https://auth.dev.graphs.social/v4/login/logout';
+		$data = array( 'access_token' => $_SESSION['access_token']);
+		$serverRequest = new ServerRequest();
+		$callAPI = $serverRequest->callAPI($method, $url, $data);
+		//var_dump($callAPI);
+		unset($_SESSION['access_token']);
+		return new RedirectResponse('/php-starter-test');
 
 	}
 }

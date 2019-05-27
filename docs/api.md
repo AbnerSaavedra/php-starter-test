@@ -15,14 +15,14 @@ application_id | 5b51eb29303935456453d09a
 
 ## LOGOUT
 ```
-https[s]://auth.dev.graphs.social/v3/logout
+https[s]://auth.dev.graphs.social/v4/login/logout
 ```
 METHOD: GET
 
 #### PARAMETROS
 Name           | Description                       
 :------------- |:----------------------------------
-access_token          | access_token obtenido en el metodo login           
+access_token   | access_token obtenido en el metodo login           
 
 ## Listado de POSTS
 ```
@@ -31,7 +31,7 @@ https://api.dev.graphs.social/v4/graphs
 
 Name           | Description                       
 :------------- |:----------------------------------
-containers_ids | 5c6f0eff3039354935b3553a
+containers_ids | 5c6f0eff3039354935b3553a 5c6f101e3039354937fc1279
 entities_ids   | 14,23,48,49,50,51 // se pasan estos ids separados por coma
 limit          | 30 // Numero de registros por pagina
 next           | valor _time_updated_ del ultimo registro de la pagina anterior
@@ -72,7 +72,7 @@ actualizado. `data.data` contiene la información de cada _entry_  retornado. La
 
 ### Crear Grafo
 ```angular2html
-https://api.[dev.]graphs.social/v3/graphs/
+https://api.[dev.]graphs.social/v4/graphs
 ```
 METODO: POST
 #### PARAMETROS
@@ -80,13 +80,13 @@ Name                 |Description
 :--------------------|:----------------------------------------------------
 access_token         |access_token obtenido en el login del usuario
 entity               | post
-container_id         | graphId del usuario // 5c6f1b403039354a6d865be2           
+container_id         | graphId del usuario 5c6f101e3039354937fc1279 //                                          5c6f1b403039354a6d865be2     
 title                | Titulo del post a crear
 description          | Contenido tipo texto a agregar al post.        
 
 ### Modificar un grafo
 ```angular2html
-https://api.[dev.]graphs.social/v3/graphs/
+https://api.[dev.]graphs.social/v4/graphs
 ```
 METODO: PUT
 #### PARAMETROS
@@ -98,7 +98,7 @@ access_token         |access_token obtenido en el login del usuario
 
 ### Eliminar un grafo
 ```angular2html
-https://api.[dev.]graphs.social/v3/graphs/
+https://api.[dev.]graphs.social/v4/graphs
 ```
 METODO: DELETE
 #### PARAMETROS
