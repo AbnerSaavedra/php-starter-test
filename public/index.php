@@ -20,45 +20,45 @@ $routerContainer = new RouterContainer();
 
 //Creamos un mapa de rutas
 $map = $routerContainer->getMap();
-
+$rootDir = basename(dirname(__DIR__, 1));
 //Index
-$map->get('index', '/php-starter-test/', [
+$map->get('index', '/'.$rootDir.'/', [
     'controller' => 'App\Controllers\IndexController',
     'action' => 'indexAction'
     ]);
 //Login
-$map->post('login', '/php-starter-test/sign-in', [
+$map->post('login', '/'.$rootDir.'/sign-in', [
     'controller' => 'App\Controllers\AuthController',
     'action' => 'getLogin'
     ]);
-$map->get('logout', '/php-starter-test/logout', [
+$map->get('logout', '/'.$rootDir.'/logout', [
     'controller' => 'App\Controllers\AuthController',
     'action' => 'getLogout'
     ]);
 
 //Posts
-$map->get('posts', '/php-starter-test/posts', [
+$map->get('posts', '/'.$rootDir.'/posts', [
     'controller' => 'App\Controllers\PostController',
     'action' => 'getIndex',
     'needsAuth' => true
     ]);
-$map->post('addPost', '/php-starter-test/posts', [
+$map->post('addPost', '/'.$rootDir.'/posts', [
     'controller' => 'App\Controllers\PostController',
     'action' => 'addPost'
     ]);
-$map->get('updatePostGet', '/php-starter-test/postUpdate', [
+$map->get('updatePostGet', '/'.$rootDir.'/postUpdate', [
     'controller' => 'App\Controllers\PostController',
     'action' => 'updatePost'
     ]);
-$map->post('updatePost', '/php-starter-test/postUpdate', [
+$map->post('updatePost', '/'.$rootDir.'/postUpdate', [
     'controller' => 'App\Controllers\PostController',
     'action' => 'updatePost'
     ]);
-$map->get('deletePostGet', '/php-starter-test/postDelete', [
+$map->get('deletePostGet', '/'.$rootDir.'/postDelete', [
     'controller' => 'App\Controllers\PostController',
     'action' => 'deletePost'
     ]);
-$map->post('deletePost', '/php-starter-test/postDelete', [
+$map->post('deletePost', '/'.$rootDir.'/postDelete', [
     'controller' => 'App\Controllers\PostController',
     'action' => 'deletePost'
     ]);
@@ -70,7 +70,7 @@ $route = $matcher->match($request);
 
 //Validamos que la ruta sea correcta y emitimos la respuesta correspondiente.
 if (!$route){
-	echo "Ruta no encontrada.";
+	echo basename(dirname(__DIR__, 1))."Ruta no encontrada.";
 }
 else{
     //El manejador de la ruta contiene la información básica de la misma
